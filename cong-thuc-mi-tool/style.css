@@ -1,0 +1,220 @@
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: white;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: none;
+  margin: auto;
+  background: white;
+  padding: 28px;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+#appSection {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  color: red;
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 0 0 24px;
+}
+
+h2 {
+  line-height: 1.25;
+  margin-top: 28px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+button {
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.admin-settings {
+  margin-top: 22px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  padding: 0 14px 16px;
+}
+
+.admin-settings summary {
+  padding: 14px 0;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.admin-settings:not([open]) {
+  padding-bottom: 0;
+}
+
+.recipe-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 12px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.recipe-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  flex: 0 0 auto;
+}
+
+.recipe-badge-noodle {
+  background: #fff3b0;
+  border-color: #e1b900;
+  color: #5b4300;
+}
+
+.recipe-badge-noodle .recipe-icon {
+  background: #d6a400;
+}
+
+.recipe-badge-dumpling {
+  background: #e7f3ff;
+  border-color: #6da8d8;
+  color: #073b63;
+}
+
+.recipe-badge-dumpling .recipe-icon {
+  background: #1f78b4;
+}
+
+.result {
+  margin-top: 25px;
+  background: #fff7cc;
+  padding: 18px;
+  border-radius: 8px;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.result-noodle {
+  background: #fff7cc;
+}
+
+.result-dumpling {
+  background: #eaf5ff;
+}
+
+.result h2 {
+  margin-top: 0;
+}
+
+.result p {
+  margin: 10px 0;
+}
+
+.result hr {
+  border: none;
+  border-top: 1px solid #d7c86a;
+  margin: 14px 0;
+}
+
+.result-dumpling hr {
+  border-top-color: #92bad8;
+}
+
+.history-item {
+  background: #eeeeee;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  line-height: 1.45;
+}
+
+@media (min-width: 760px) {
+  .container {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+
+  #appSection {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 0;
+    background: white;
+  }
+
+  .container {
+    min-height: 100vh;
+    padding: 10px;
+    border-radius: 0;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  input,
+  select,
+  button {
+    font-size: 16px;
+    padding: 11px;
+  }
+
+  .result {
+    font-size: 16px;
+    padding: 12px 10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    border-radius: 0;
+  }
+}

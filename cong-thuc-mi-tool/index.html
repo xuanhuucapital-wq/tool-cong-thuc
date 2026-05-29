@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Công Thức Trộn Mì</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container" id="loginSection">
+    <h1>Đăng nhập</h1>
+
+    <label>Email</label>
+    <input type="email" id="email" placeholder="Nhập email">
+
+    <label>Mật khẩu</label>
+    <input type="password" id="password" placeholder="Nhập mật khẩu">
+
+    <button onclick="login()">Đăng nhập</button>
+
+    <p id="loginError" style="color:red;"></p>
+  </div>
+
+  <div class="container" id="appSection" style="display:none;">
+    <h1>Công Thức Trộn Mì</h1>
+
+    <p>Xin chào: <b id="currentUser"></b></p>
+    <button onclick="logout()">Đăng xuất</button>
+
+    <div id="adminSection" style="display:none;">
+      <h2>Quản trị công thức</h2>
+
+      <input id="recipeName" placeholder="Tên công thức">
+
+      <button onclick="addRecipe()">Thêm công thức</button>
+
+      <details class="admin-settings">
+        <summary>Chỉnh công thức mì gốc</summary>
+
+        <label>Bột khô cho 14kg thành phẩm (g)</label>
+        <input type="number" id="settingDryFlour">
+
+        <label>Tỷ lệ nước/bột khô (%)</label>
+        <input type="number" id="settingWaterRatioPercent" step="0.01">
+
+        <label>7 - Trứng / 1kg bột khô</label>
+        <input type="number" id="settingEggPer1400" step="0.1">
+
+        <label>9 - Nước màu / 1kg bột khô (g)</label>
+        <input type="number" id="settingNuocMauPer1400">
+
+        <label>8 - Nước tro / 1kg bột khô (g)</label>
+        <input type="number" id="settingNuocTroPer1400">
+
+        <label>Lòng trắng khô / 1kg thành phẩm (%)</label>
+        <input type="number" id="settingLongTrangKhoPercent" step="0.01">
+
+        <label>2. Muối / 1kg bột khô (%)</label>
+        <input type="number" id="settingAdditive2Percent" step="0.01">
+
+        <label>3. Trehalose / 1kg bột khô (%)</label>
+        <input type="number" id="settingAdditive3Percent" step="0.01">
+
+        <label>5. kansui / 1kg bột khô (%)</label>
+        <input type="number" id="settingAdditive5Percent" step="0.01">
+
+        <label>6. Chất bảo quản / 1.4kg thành phẩm (%)</label>
+        <input type="number" id="settingAdditive6Percent" step="0.01">
+
+        <label>12. K2co3 / 1kg bột khô (%)</label>
+        <input type="number" id="settingAdditive12Percent" step="0.01">
+
+        <label>10 - S1000A / 1.4kg thành phẩm (%)</label>
+        <input type="number" id="settingS1000aPercent" step="0.01">
+
+        <label>13 - Gusto Lk07 / 1.4kg thành phẩm (%)</label>
+        <input type="number" id="settingLk07Percent" step="0.01">
+
+        <button onclick="saveNoodleSettings()">Lưu công thức mì gốc</button>
+      </details>
+
+      <details class="admin-settings">
+        <summary>Chỉnh công thức hoành thánh / sủi cảo</summary>
+
+        <label>Bột khô cho 14kg thành phẩm (g)</label>
+        <input type="number" id="dumplingDryFlour">
+
+        <label>Tỷ lệ nước/bột khô (%)</label>
+        <input type="number" id="dumplingWaterRatioPercent" step="0.01">
+
+        <label>Gluten / 1.4kg thành phẩm (%) - dao động 0.46% đến 0.7%</label>
+        <input type="number" id="dumplingGlutenPercent" step="0.01">
+
+        <label>7 - Trứng / 1.4kg thành phẩm</label>
+        <input type="number" id="dumplingEggPer1400" step="0.1">
+
+        <label>9 - Nước màu / 1kg bột khô + gluten (g)</label>
+        <input type="number" id="dumplingNuocMauPerKgDry">
+
+        <label>8 - Nước tro / 1kg bột khô + gluten (g)</label>
+        <input type="number" id="dumplingNuocTroPerKgDry">
+
+        <label>Lòng trắng khô / thành phẩm (%)</label>
+        <input type="number" id="dumplingLongTrangKhoPercent" step="0.01">
+
+        <label>4 / thành phẩm (%)</label>
+        <input type="number" id="dumplingAdditive4Percent" step="0.01">
+
+        <label>2. Muối / 1kg bột khô (%)</label>
+        <input type="number" id="dumplingAdditive2Percent" step="0.01">
+
+        <label>3. Trehalose / 1kg bột khô (%)</label>
+        <input type="number" id="dumplingAdditive3Percent" step="0.01">
+
+        <label>5 - kansui / 1.4kg thành phẩm (%)</label>
+        <input type="number" id="dumplingAdditive5Percent" step="0.01">
+
+        <label>6 - Chất bảo quản / thành phẩm (%)</label>
+        <input type="number" id="dumplingAdditive6Percent" step="0.01">
+
+        <button onclick="saveDumplingSettings()">Lưu công thức hoành thánh / sủi cảo</button>
+      </details>
+    </div>
+
+    <label>Chọn công thức</label>
+    <select id="recipe" onchange="handleRecipeChange()">
+      <option value="mi14">Mì vắt - Công thức gốc 14kg</option>
+      <option value="hoanhthanh">Hoành thánh / Sủi cảo</option>
+    </select>
+
+    <div id="recipeBadge" class="recipe-badge recipe-badge-noodle">
+      <span class="recipe-icon">MÌ</span>
+      <span id="recipeBadgeText">Công thức mì vắt</span>
+    </div>
+
+    <label>Khối lượng thành phẩm cần làm (kg)</label>
+    <input type="number" id="targetKg" value="14">
+
+    <label>Khối lượng thùng chứa (g)</label>
+    <input type="number" id="containerWeight" value="800">
+
+    <label>Khối lượng bao (g)</label>
+    <input type="number" id="bagWeight" value="140">
+
+    <label>Tỷ lệ nước</label>
+    <input type="text" id="waterRatio" value="40.6%" readonly>
+
+    <button onclick="calculateRecipe()">Tính công thức</button>
+    <button onclick="saveHistory()">Lưu lịch sử mẻ trộn</button>
+
+    <div id="result" class="result"></div>
+
+    <h2>Lịch sử mẻ trộn</h2>
+    <div id="history"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
