@@ -83,6 +83,12 @@ button {
   padding-bottom: 0;
 }
 
+.admin-note {
+  color: #666666;
+  font-size: 14px;
+  margin: 6px 0 0;
+}
+
 .recipe-badge {
   display: flex;
   align-items: center;
