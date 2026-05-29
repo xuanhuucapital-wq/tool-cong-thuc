@@ -530,9 +530,9 @@ function calculateNoodleRecipe(targetKg, containerWeight, bagWeight) {
     <hr>
   `;
 
-  // Nhóm bột khô ở đầu kết quả.
-  resultHTML += addResultLine(result, "Bột khô", dryFlour, "g");
+  // Dòng bột khô kiểm tra trên cân đã bao gồm bao.
   resultHTML += addResultLine(result, "Bột khô kiểm tra trên cân", scaleDryFlour, "g", "highlight-result");
+  resultHTML += `<p class="result-note">Đã bao gồm bao ${formatNumber(bagWeight, "g")}g.</p>`;
   resultHTML += "<hr>";
   // Dòng tỷ lệ nước riêng trước nhóm trứng, màu, nước tro.
   resultHTML += `<p>Tỷ lệ nước/bột khô: <b>${waterRatio.toFixed(2)}%</b></p>`;
@@ -610,10 +610,9 @@ function calculateDumplingRecipe(targetKg, containerWeight, bagWeight) {
     <hr>
   `;
 
-  // Nhóm bột khô, gluten và số kiểm tra trên cân ở đầu kết quả.
-  resultHTML += addResultLine(result, "Bột khô", dryFlour, "g");
-  resultHTML += addResultLine(result, "Gluten", gluten, "g");
-  resultHTML += addResultLine(result, "Bột + Gluten + Bao kiểm tra trên cân", scaleDryFlour, "g", "highlight-result");
+  // Dòng bột khô + gluten kiểm tra trên cân đã bao gồm bao.
+  resultHTML += addResultLine(result, "Bột khô + Gluten", scaleDryFlour, "g", "highlight-result");
+  resultHTML += `<p class="result-note">Đã bao gồm bao ${formatNumber(bagWeight, "g")}g.</p>`;
   resultHTML += "<hr>";
   // Dòng tỷ lệ nước riêng trước nhóm trứng, màu, nước tro.
   resultHTML += `<p>Tỷ lệ nước/bột khô: <b>${waterRatio.toFixed(2)}%</b></p>`;

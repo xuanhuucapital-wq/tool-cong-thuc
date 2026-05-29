@@ -163,6 +163,13 @@ button {
   padding: 10px 12px;
 }
 
+.result .result-note {
+  color: #6a5a00;
+  font-size: 15px;
+  font-style: italic;
+  margin-top: -4px;
+}
+
 .result hr {
   border: none;
   border-top: 1px solid #d7c86a;
