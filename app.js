@@ -578,12 +578,14 @@ function calculateDumplingRecipe(targetKg, containerWeight, bagWeight) {
   // Tỷ lệ nhân so với mẻ gốc 14kg.
   const ratio = targetKg / settings.baseKg;
 
-  // Bột khô chưa cộng gluten.
-  const dryFlour = settings.dryFlour * ratio;
+  // Tổng nền bột khô + gluten trước khi tách gluten ra riêng.
+  const baseDryFlourWithGluten = settings.dryFlour * ratio;
   // Gluten tính theo công thức: thành phẩm / 1.4 * phần trăm gluten.
   const gluten = (targetG / 1.4) * (settings.glutenPercent / 100);
+  // Gluten tăng bao nhiêu thì bột khô giảm bấy nhiêu để tổng nền không đổi.
+  const dryFlour = baseDryFlourWithGluten - gluten;
   // Bột khô cộng gluten để làm nền tính nước tro/nước màu/tổng nước.
-  const dryFlourWithGluten = dryFlour + gluten;
+  const dryFlourWithGluten = baseDryFlourWithGluten;
   // Bột + gluten + bao để thợ kiểm tra trên cân.
   const scaleDryFlour = dryFlourWithGluten + bagWeight;
   // Tỷ lệ nước/bột khô của hoành thánh/sủi cảo.
