@@ -153,6 +153,16 @@ button {
   margin: 10px 0;
 }
 
+.result .highlight-result {
+  background: #fff0a6;
+  border: 2px solid #e23b2f;
+  border-radius: 8px;
+  color: #b51f17;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 12px;
+}
+
 .result hr {
   border: none;
   border-top: 1px solid #d7c86a;
@@ -216,5 +226,10 @@ button {
     margin-left: -10px;
     margin-right: -10px;
     border-radius: 0;
+  }
+
+  .result .highlight-result {
+    font-size: 18px;
+    padding: 10px;
   }
 }

@@ -476,12 +476,14 @@ function formatNumber(value, unit) {
 }
 
 // Thêm một dòng kết quả vào HTML và đồng thời lưu vào object kết quả.
-function addResultLine(result, name, value, unit) {
+function addResultLine(result, name, value, unit, className = "") {
   // Lưu giá trị tính được vào currentResult để khi lưu lịch sử có đầy đủ chi tiết.
   result.ingredients[name] = value;
 
+  const classAttribute = className ? ` class="${className}"` : "";
+
   // Trả về một dòng HTML dạng: Tên nguyên liệu: số lượng đơn vị.
-  return `<p>${name}: <b>${formatNumber(value, unit)} ${unit}</b></p>`;
+  return `<p${classAttribute}>${name}: <b>${formatNumber(value, unit)} ${unit}</b></p>`;
 }
 
 // Tính công thức mì vắt theo khối lượng thành phẩm người dùng nhập.
@@ -528,9 +530,11 @@ function calculateNoodleRecipe(targetKg, containerWeight, bagWeight) {
     <hr>
   `;
 
-  // Các dòng bột và tỷ lệ nước ở đầu kết quả.
+  // Nhóm bột khô ở đầu kết quả.
   resultHTML += addResultLine(result, "Bột khô", dryFlour, "g");
-  resultHTML += addResultLine(result, "Bột khô kiểm tra trên cân", scaleDryFlour, "g");
+  resultHTML += addResultLine(result, "Bột khô kiểm tra trên cân", scaleDryFlour, "g", "highlight-result");
+  resultHTML += "<hr>";
+  // Dòng tỷ lệ nước riêng trước nhóm trứng, màu, nước tro.
   resultHTML += `<p>Tỷ lệ nước/bột khô: <b>${waterRatio.toFixed(2)}%</b></p>`;
   // Nhóm trứng, màu, nước tro.
   resultHTML += addResultLine(result, getNoodleIngredientLabel(7), (dryFlour / 1000) * settings.eggPer1400, "trứng");
@@ -554,7 +558,7 @@ function calculateNoodleRecipe(targetKg, containerWeight, bagWeight) {
   resultHTML += "<hr>";
   // Nhóm tổng kết cuối bảng.
   resultHTML += addResultLine(result, "Tổng thể tích (11)", totalVolume, "g");
-  resultHTML += addResultLine(result, "Tổng KL = (11) + (12)", totalWeight, "g");
+  resultHTML += addResultLine(result, "Tổng KL = (11) + (12)", totalWeight, "g", "highlight-result");
 
   // Lưu kết quả hiện tại để có thể bấm "Lưu lịch sử mẻ trộn".
   currentResult = result;
