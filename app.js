@@ -610,10 +610,12 @@ function calculateDumplingRecipe(targetKg, containerWeight, bagWeight) {
     <hr>
   `;
 
-  // Các dòng bột, gluten và tỷ lệ nước ở đầu kết quả.
+  // Nhóm bột khô, gluten và số kiểm tra trên cân ở đầu kết quả.
   resultHTML += addResultLine(result, "Bột khô", dryFlour, "g");
   resultHTML += addResultLine(result, "Gluten", gluten, "g");
-  resultHTML += addResultLine(result, "Bột + Gluten + Bao kiểm tra trên cân", scaleDryFlour, "g");
+  resultHTML += addResultLine(result, "Bột + Gluten + Bao kiểm tra trên cân", scaleDryFlour, "g", "highlight-result");
+  resultHTML += "<hr>";
+  // Dòng tỷ lệ nước riêng trước nhóm trứng, màu, nước tro.
   resultHTML += `<p>Tỷ lệ nước/bột khô: <b>${waterRatio.toFixed(2)}%</b></p>`;
   // Nhóm trứng, màu, nước tro.
   resultHTML += addResultLine(result, getNoodleIngredientLabel(7), (targetG / 1400) * settings.eggPer1400, "trứng");
@@ -635,7 +637,7 @@ function calculateDumplingRecipe(targetKg, containerWeight, bagWeight) {
   resultHTML += "<hr>";
   // Nhóm tổng kết cuối bảng.
   resultHTML += addResultLine(result, "Tổng thể tích (11)", totalVolume, "g");
-  resultHTML += addResultLine(result, "Tổng KL = (11) + (12)", totalWeight, "g");
+  resultHTML += addResultLine(result, "Tổng KL = (11) + (12)", totalWeight, "g", "highlight-result");
 
   // Lưu kết quả hiện tại để có thể bấm "Lưu lịch sử mẻ trộn".
   currentResult = result;
