@@ -1,20 +1,20 @@
 // Danh sách tài khoản đăng nhập mẫu, mỗi tài khoản có quyền admin hoặc nhân viên.
 const users = [
   {
-    email: "admin@gmail.com",
-    password: "123456",
-    name: "Admin",
+    email: "adminxuanhuu@gmail.com",
+    password: "@@@Huu2121996",
+    name: "Admin Hữu",
     role: "admin"
   },
   {
-    email: "tho1@gmail.com",
-    password: "123456",
-    name: "Thợ trộn 1",
+    email: "inhu.vn@gmail.com",
+    password: "Thn@442324",
+    name: "Chị Như",
     role: "staff"
   },
   {
     email: "tho2@gmail.com",
-    password: "123456",
+    password: "@@@123456",
     name: "Thợ trộn 2",
     role: "staff"
   }
