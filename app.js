@@ -530,7 +530,8 @@ function calculateNoodleRecipe(targetKg, containerWeight, bagWeight) {
     <hr>
   `;
 
-  // Dòng bột khô kiểm tra trên cân đã bao gồm bao.
+  // Nhóm bột khô và dòng kiểm tra trên cân đã bao gồm bao.
+  resultHTML += addResultLine(result, "Bột khô", dryFlour, "g");
   resultHTML += addResultLine(result, "Bột khô kiểm tra trên cân", scaleDryFlour, "g", "highlight-result");
   resultHTML += `<p class="result-note">Đã bao gồm bao ${formatNumber(bagWeight, "g")}g.</p>`;
   resultHTML += "<hr>";
@@ -610,8 +611,10 @@ function calculateDumplingRecipe(targetKg, containerWeight, bagWeight) {
     <hr>
   `;
 
-  // Dòng bột khô + gluten kiểm tra trên cân đã bao gồm bao.
-  resultHTML += addResultLine(result, "Bột khô + Gluten", scaleDryFlour, "g", "highlight-result");
+  // Nhóm bột khô, gluten và dòng kiểm tra trên cân đã bao gồm bao.
+  resultHTML += addResultLine(result, "Bột khô", dryFlour, "g");
+  resultHTML += addResultLine(result, "Gluten", gluten, "g");
+  resultHTML += addResultLine(result, "Bột khô + Gluten kiểm tra trên cân", scaleDryFlour, "g", "highlight-result");
   resultHTML += `<p class="result-note">Đã bao gồm bao ${formatNumber(bagWeight, "g")}g.</p>`;
   resultHTML += "<hr>";
   // Dòng tỷ lệ nước riêng trước nhóm trứng, màu, nước tro.
